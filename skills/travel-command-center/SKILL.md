@@ -15,9 +15,29 @@ chat transcript is lost.
 
 ---
 
-## 0. Standing facts — FILL THIS IN BEFORE FIRST USE
+## 0. Standing facts — filled by the FIRST-RUN INTERVIEW
 
-Replace every `<...>` placeholder. The skill is only as good as this block.
+**On the very first use of this skill, interview the user once** and write their
+answers into this block yourself. Ask conversationally, a few questions at a
+time, covering every field below plus one more: **where the travel folder should
+live.** Offer Desktop (simplest, works offline) versus Google Drive or an
+equivalent (syncs across machines, survives a laptop swap; right answer for
+anyone with an assistant who files receipts too), and make a recommendation
+based on how they work rather than listing options neutrally.
+
+**Never re-run the interview after that** unless the user explicitly asks
+("re-interview me", "update my travel profile"). Changed facts get edited in
+place, with a dated note.
+
+After the interview, create the folder structure so nothing gets lost:
+
+```
+<Travel folder>/
+├── Receipts/            one subfolder per trip: YYYY-MM_slug/
+│   └── _UNMATCHED/      receipts that match no trip — ask, don't guess
+├── TRAVELER-PROFILE.md  the answers from this interview
+└── README.md            what lives where, so a human can navigate it too
+```
 
 **Traveler.** `<Full legal name as it appears on your ID>` · ticket name
 `<LASTNAME / FIRSTNAME MIDDLE>` · DOB `<date>` · `<email>` · home airport
@@ -249,3 +269,39 @@ For clinicians (or anyone whose absence requires a named human to cover):
 
 Everything else in this skill is unchanged. If you have no coverage obligations,
 delete this section and the two properties.
+
+---
+
+## 10. The dashboard artifact
+
+Offer to build a persistent dashboard (in Claude Cowork, an Artifact) as the
+visible face of the system: trip board, booking status, spend, conflicts, and a
+door-to-door itinerary per trip. Rules learned the hard way:
+
+- **Design it properly.** Polished cards, stat tiles, readable type, a real
+  palette. People trust a dashboard that looks maintained and ignore one that
+  looks generated.
+- **Generate every element from one data source.** A dashboard that bakes the
+  same fact into parallel structures (a status badge here, a counter there, a
+  table row somewhere else) WILL drift into self-contradiction. One data block,
+  everything rendered from it.
+- **The dashboard is a view, not the record.** Notion stays the system of
+  record; rebuild the dashboard's data from Notion + the booking system rather
+  than editing it by hand.
+- **Add a Vacation Scanner tab if the user wants one:** destination ideas
+  matched to their actual open calendar windows, best months, rough price bands
+  (clearly labeled as estimates, never fabricated fares), and a watch toggle
+  that queues real pricing on the next scheduled run. Travel systems should not
+  exist only for obligations.
+
+## 11. Learn over time, verify on a cadence
+
+- **Learn.** When the user corrects you (a seat preference, a hotel brand, a
+  card rule, "never book me the last flight out"), append it to Section 0 with
+  a date. The profile should be smarter at month three than at day one.
+- **Verify.** On a schedule (a daily run is ideal), reconcile the three stores
+  against each other: the Notion ledger, the booking system's live reservations,
+  and the receipts folder on disk. Name any mismatch rather than silently
+  fixing it. Rows that claim bookings which do not exist, receipts that sum to
+  a different total than the ledger, and files that match no trip are exactly
+  the errors this system exists to catch.
