@@ -254,6 +254,29 @@ write replaces the cell and destroys the trail), update `Actual Spend`, and move
 name the gap in dollars and say which reading is plausible. Never silently adjust
 the ledger to match, and never adjust receipts to match the ledger.
 
+### Trip close-out: assemble the packet
+
+When a trip's last travel day passes, close it out without being asked:
+
+1. **Audit the folder.** Every leg and night needs a document. Name what is
+   missing, and chase the one that is always missing: the hotel folio. A
+   confirmation is not a folio; if only a confirmation is on file, draft the
+   folio-request email to the property.
+2. **Write the TRIP-SUMMARY.** One page: booking table with confirmations,
+   documented total vs. ledger total, payer entity, card used, open items.
+3. **Merge the packet.** One PDF, summary page first, then the receipts in
+   itinerary order. Name it `REIMBURSEMENT-PACKET_<slug>.pdf`, file it in the
+   trip folder, attach it to the Notion row.
+4. **Advance the ladder** to `Package ready` and tell the user it is one
+   forward away from submitted.
+
+The dashboard artifact must make this trail visible per trip: a click-to-copy
+link or path to the trip's receipts folder, a folio flag (outstanding, at
+checkout, or not needed), whether the merged packet exists, and a reimbursement
+ladder the user can check off by hand — `Collect receipts → Package ready →
+Submitted → Reimbursed`. Submitted-ness is a fact the user knows and the system
+doesn't; give them the checkbox instead of guessing.
+
 ---
 
 ## 9. Optional overlay: clinical / coverage mode
